@@ -1,6 +1,6 @@
 program penjualan_bibit_tanaman_buah;
-{IS.
- FS.}
+{IS. Terdefinisi array kosong dari data bibit, data transaksi, dan data laporan
+ FS. Menjalankan program penjualan bibit buah sesuai dengan menu yang disediakan}
 uses crt;
 {======================== DEKLARASI TIPE BENTUKAN =============================}
 {ARRAY 1: DATA BIBIT}
