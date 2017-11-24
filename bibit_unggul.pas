@@ -586,7 +586,7 @@ Begin
       writeln;
     end;
     b:=b+1;
-    write('Lakukan transaksi lainnya ? ');
+    write('Lakukan transaksi lainnya ? [Y/T] ');
     readln(again);
   until (again='T') or (again='t');
   if (tsaksi[a].tot_akhir=0) then
