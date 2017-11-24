@@ -466,6 +466,7 @@ begin
     readln;
     b:=b+1;
   end;
+  readln;
 end;
 {Menu 4}
 Procedure transaction(var bbt : pot; var tsaksi : struk; var month : laporan; var a : integer);
@@ -586,7 +587,7 @@ Begin
       writeln;
     end;
     b:=b+1;
-    write('Lakukan transaksi lainnya ? [Y/T] ');
+    write('Lakukan transaksi lainnya ? ');
     readln(again);
   until (again='T') or (again='t');
   if (tsaksi[a].tot_akhir=0) then
@@ -786,6 +787,7 @@ BEGIN
             writeln('=============================');
             write('Masukkan pilihan anda : ');
             readln(pil);
+            writeln;
             case pil of
             1 : begin
                   sort_harga(bibit);
