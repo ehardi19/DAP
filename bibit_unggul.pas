@@ -116,7 +116,8 @@ var
   tanya1,tanya2 : string;
 begin
   repeat
-    i:=i+1;
+    if (bbt[i].nama_buah<>'') then
+     i:=i+1;
     clrscr;
     writeln('DATA BUAH KE-',i);
     write('Nama Buah : ');
