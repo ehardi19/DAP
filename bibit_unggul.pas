@@ -560,6 +560,7 @@ Begin
                 bbt[i].jenis[j].keterangan.stok:=bbt[i].jenis[j].keterangan.stok-tsaksi[a].list_beli[b].jum_beli;
                 bbt[i].jenis[j].keterangan.sold[bln]:=tsaksi[a].list_beli[b].jum_beli;
                 month[bln]:=month[bln]+tsaksi[a].tot_akhir;
+                b:=b+1;
               end
               else
               begin
@@ -586,7 +587,6 @@ Begin
       writeln('Bibit jenis buah yang anda cari tidak tersedia');
       writeln;
     end;
-    b:=b+1;
     write('Lakukan transaksi lainnya ? ');
     readln(again);
   until (again='T') or (again='t');
