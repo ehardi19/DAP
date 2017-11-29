@@ -119,9 +119,11 @@ begin
     if (bbt[i].nama_buah<>'') then
       i:=i+1;
     clrscr;
+    writeln('-----------------------------------------------------');
     writeln('DATA BUAH KE-',i);
     write('Nama Buah : ');
     readln(bbt[i].nama_buah);
+    writeln('-----------------------------------------------------');
     j:=1;
     repeat
       clrscr;
@@ -328,9 +330,10 @@ var
 begin
   repeat
     clrscr;
+    writeln('-----------------------------------------------------');
     write('Masukkan nama jenis yang ingin diedit : ');
     readln(xJenis);
-    writeln;
+    writeln('-----------------------------------------------------');
     searchJenis(bbt,i,xJenis,foundJenis,j);
     if foundJenis=true then
     begin
@@ -344,7 +347,6 @@ begin
       writeln('4. Edit Harga Satuan');
       writeln('5. Edit Stok');
       writeln('6. Hapus Data Jenis');
-      writeln('7. Back to previous menu');
       writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
@@ -383,9 +385,10 @@ begin
     end
     else
       writeln('Data tidak ditemukan');
-    writeln;
+    writeln('-----------------------------------------------------');
     write('Lakukan pengeditan untuk jenis lain ? [Y/T] : ');
     readln(tanya);
+    writeln('-----------------------------------------------------');
   until (tanya='T') or (tanya='t') or (pil=7);
 end;
 {Menu 3}
@@ -401,14 +404,14 @@ var
 begin
   repeat
   clrscr;
+    writeln('-----------------------------------------------------');
     write('Masukkan nama buah yang ingin diedit : ');
     readln(xBuah);
-    writeln;
+    writeln('-----------------------------------------------------');
     searchBuah(bbt,xBuah,foundBuah,i);
     if foundBuah=true then
     begin
       writeln('Data ditemukan pada indeks ke-',i);
-      writeln;
       writeln('=====================================================');
       writeln('                       MENU EDIT');
       writeln('=====================================================');
@@ -416,7 +419,6 @@ begin
       writeln('2. Tambahkan Data Jenis');
       writeln('3. Edit Data Jenis');
       writeln('4. Hapus Data Buah');
-      writeln('5. Back to main menu');
       writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
@@ -448,11 +450,11 @@ begin
     end
     else
       writeln('Data tidak ditemukan');
-    writeln;
+    writeln('-----------------------------------------------------');
     write('Lakukan pengeditan untuk buah lain ? [Y/T] : ');
     readln(tanya);
-    writeln;
-  until (tanya='T') or (tanya='t') or (pil=5);
+    writeln('-----------------------------------------------------');
+  until (tanya='T') or (tanya='t');
 end;
 {--------------------------------- MENU 4 -------------------------------------}
 {Part of Menu 4}
@@ -583,24 +585,16 @@ Begin
           end;
         end
         else
-        begin
           writeln('Maaf stok untuk sementara kosong');
-          writeln;
-        end;
       end
       else
-      begin
         writeln('Bibit jenis buah yang anda cari tidak tersedia');
-        writeln;
-      end;
     end
     else
-    begin
       writeln('Bibit jenis buah yang anda cari tidak tersedia');
-      writeln;
-    end;
     write('Lakukan transaksi lainnya ? ');
     readln(again);
+    writeln('-----------------------------------------------------');
   until (again='T') or (again='t');
   if (tsaksi[a].tot_akhir=0) then
   begin
@@ -609,7 +603,9 @@ Begin
     tsaksi[a].tgl_beli.tgl:=0;
     tsaksi[a].tgl_beli.bln:=0;
     tsaksi[a].tgl_beli.thn:=0;
+    writeln('-----------------------------------------------------');
     writeln('Tidak ada data pembelian, transaksi dibatalkan');
+    writeln('-----------------------------------------------------');
   end
   else
   begin
