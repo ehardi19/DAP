@@ -117,7 +117,7 @@ var
 begin
   repeat
     if (bbt[i].nama_buah<>'') then
-     i:=i+1;
+      i:=i+1;
     clrscr;
     writeln('DATA BUAH KE-',i);
     write('Nama Buah : ');
@@ -125,8 +125,10 @@ begin
     j:=1;
     repeat
       clrscr;
+      writeln('-----------------------------------------------------');
       writeln('DATA BUAH KE-',i);
       writeln('Nama Buah : ',bbt[i].nama_buah);
+      writeln('-----------------------------------------------------');
       writeln('JENIS KE-',j);
       write('1. Nama Jenis : ');
       readln(bbt[i].jenis[j].nama_jenis);
@@ -140,14 +142,14 @@ begin
       write(' D. Stok                : ');
       readln(bbt[i].jenis[j].keterangan.stok);
       j:=j+1;
-      writeln;
+      writeln('-----------------------------------------------------');
       write('Ingin menambahkan jenis lagi ? [Y/T] : ');
       readln(tanya2);
-      writeln;
+      writeln('-----------------------------------------------------');
     until(tanya2='T') or (tanya2='t');
     write('Ingin menambahkan buah lagi ? [Y/T]  : ');
     readln(tanya1);
-    writeln;
+    writeln('-----------------------------------------------------');
   until(tanya1='T') or (tanya1='t');
 end;
 {--------------------------------- MENU 2 -------------------------------------}
@@ -164,9 +166,10 @@ begin
   while (i<=maxi) do
   begin
     clrscr;
+    writeln('-----------------------------------------------------');
     writeln('BUAH KE-',i);
     writeln('Nama Buah : ',bbt[i].nama_buah);
-    writeln;
+    writeln('-----------------------------------------------------');
     j:=1;
     maxj:=countJenis(bbt,i);
     while (j<=maxj) do
@@ -291,8 +294,10 @@ begin
   clrscr;
   repeat
     clrscr;
+    writeln('-----------------------------------------------------');
     writeln('DATA BUAH KE-',i);
     writeln('Nama Buah : ',bbt[i].nama_buah);
+    writeln('-----------------------------------------------------');
     writeln('JENIS KE-',j);
     write('1. Nama Jenis           : ');
     readln(bbt[i].jenis[j].nama_jenis);
@@ -306,9 +311,10 @@ begin
     write(' D. Stok                : ');
     readln(bbt[i].jenis[j].keterangan.stok);
     j:=j+1;
-    writeln;
+    writeln('-----------------------------------------------------');
     write('Ingin menambahkan jenis lagi ? [Y/T] : ');
     readln(tanya);
+    writeln('-----------------------------------------------------');
   until(tanya='T') or (tanya='t');
 end;
 procedure editJenis(var bbt : pot; var i : integer);
@@ -329,9 +335,9 @@ begin
     if foundJenis=true then
     begin
       writeln('Data ditemukan pada indeks ke-',j);
-      writeln('=============================');
-      writeln('     MENU EDIT');
-      writeln('=============================');
+      writeln('=====================================================');
+      writeln('                       MENU EDIT');
+      writeln('=====================================================');
       writeln('1. Edit Nama Jenis');
       writeln('2. Edit Asal Negara');
       writeln('3. Edit Tahun Mulai Panen');
@@ -339,10 +345,10 @@ begin
       writeln('5. Edit Stok');
       writeln('6. Hapus Data Jenis');
       writeln('7. Back to previous menu');
-      writeln('=============================');
+      writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
-      writeln;
+      writeln('=====================================================');
       case pil of
       1 : begin
             write('Nama Jenis : ');
@@ -403,18 +409,18 @@ begin
     begin
       writeln('Data ditemukan pada indeks ke-',i);
       writeln;
-      writeln('=============================');
-      writeln('     MENU EDIT');
-      writeln('=============================');
+      writeln('=====================================================');
+      writeln('                       MENU EDIT');
+      writeln('=====================================================');
       writeln('1. Edit Nama Buah');
       writeln('2. Tambahkan Data Jenis');
       writeln('3. Edit Data Jenis');
       writeln('4. Hapus Data Buah');
       writeln('5. Back to main menu');
-      writeln('=============================');
+      writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
-      writeln;
+      writeln('=====================================================');
       case pil of
       1 : begin
             write('Nama Buah : ');
@@ -458,16 +464,17 @@ begin
   b:=1;
   while (tsaksi[a].list_beli[b].buah<>'') do
   begin
+    writeln('-----------------------------------------------------');
     writeln('ITEM KE-',b);
-    writeln;
+    writeln('-----------------------------------------------------');
     writeln('Jenis Bibit Buah               : ',tsaksi[a].list_beli[b].buah,' ',tsaksi[a].list_beli[b].jenis);
     writeln('Jumlah Pembelian               : ',tsaksi[a].list_beli[b].jum_beli);
     writeln('Harga Satuan                   : ',tsaksi[a].list_beli[b].harga_sat);
     writeln('Total Harga                    : ',tsaksi[a].list_beli[b].tot_harga);
+    writeln('-----------------------------------------------------');
     readln;
     b:=b+1;
   end;
-  readln;
 end;
 {Menu 4}
 Procedure transaction(var bbt : pot; var tsaksi : struk; var month : laporan; var a : integer);
@@ -489,19 +496,20 @@ Begin
     if (b=1) then
     begin
       tsaksi[a].list_beli[b].tot_harga:=0;
+      writeln('-----------------------------------------------------');
       writeln('DATA PEMBELI');
-      writeln('------------------------------------');
+      writeln('-----------------------------------------------------');
       write('Nama Pembeli         : ');
       readln(nama);
-      writeln('------------------------------------');
+      writeln('-----------------------------------------------------');
       writeln('Taanggal Pembelian');
-      writeln('------------------------------------');
+      writeln('-----------------------------------------------------');
       write('Tanggal              : ');
       readln(tgl);
       write('Bulan                : ');
       readln(bln);
       writeln('Tahun                : 2017');
-      writeln('------------------------------------');
+      writeln('-----------------------------------------------------');
       readln;
       tsaksi[a].nama:=nama;
       tsaksi[a].tgl_beli.tgl:=tgl;
@@ -510,13 +518,14 @@ Begin
     end;
     writeln;
     clrscr;
+    writeln('-----------------------------------------------------');
     writeln('PENCARIAN BIBIT');
-    writeln('------------------------------------');
+    writeln('-----------------------------------------------------');
     write('Masukkan nama buah  : ');
     readln(buah);
     write('Masukkan jenis buah : ');
     readln(jenis);
-    writeln;
+    writeln('-----------------------------------------------------');
     searchBuah(bbt,buah,foundBuah,i);
     if (foundBuah=true) then
     begin
@@ -527,28 +536,30 @@ Begin
         clrscr;
         if (bbt[i].jenis[j].keterangan.stok>0) then
         begin
+          writeln('-----------------------------------------------------');
           writeln('Nama Jenis Bibit Buah  : ',bbt[i].nama_buah,' ',bbt[i].jenis[j].nama_jenis);
           writeln('Asal                   : ',bbt[i].jenis[j].keterangan.asal);
           writeln('Tahun Mulai Panen      : ',bbt[i].jenis[j].keterangan.thn_panen);
           writeln('Harga Satuan           : ',bbt[i].jenis[j].keterangan.harga);
           writeln('Stok                   : ',bbt[i].jenis[j].keterangan.stok);
-          writeln;
+          writeln('-----------------------------------------------------');
           write('Masukkan ke keranjang belanjaan ? [Y/T] : ');
           readln(confirm);
-          writeln;
+          writeln('-----------------------------------------------------');
           if (confirm='Y') or (confirm='y') then
           begin
             repeat
               clrscr;
+              writeln('-----------------------------------------------------');
               writeln('ITEM KE-',b);
               writeln('Stok yang tersedia ',bbt[i].jenis[j].keterangan.stok);
-              writeln;
-              writeln('Nama Pembeli                   : ',tsaksi[a].nama);
-              writeln('Tanggal Pembelian [DD/MM/YYYY] : ',tsaksi[a].tgl_beli.tgl,'/',tsaksi[a].tgl_beli.bln,'/',tsaksi[a].tgl_beli.thn);
-              writeln('Jenis Bibit Buah               : ',bbt[i].nama_buah,' ',bbt[i].jenis[j].nama_jenis);
-              write('Jumlah Pembelian               : ');
+              writeln('-----------------------------------------------------');
+              writeln('Nama Pembeli      : ',tsaksi[a].nama);
+              writeln('Tanggal Pembelian : ',tsaksi[a].tgl_beli.tgl,'/',tsaksi[a].tgl_beli.bln,'/',tsaksi[a].tgl_beli.thn);
+              writeln('Jenis Bibit Buah  : ',bbt[i].nama_buah,' ',bbt[i].jenis[j].nama_jenis);
+              write('Jumlah Pembelian  : ');
               readln(jum_beli);
-              writeln;
+              writeln('-----------------------------------------------------');
               cek_stok:=cekStok(jum_beli,bbt,i,j);
               if (cek_stok=true) then
               begin
@@ -603,14 +614,16 @@ Begin
   else
   begin
     clrscr;
-    writeln('                          STRUK PEMBELIAN');
-    writeln('=====================================================================');
+    writeln('=====================================================');
+    writeln('                       STRUK PEMBELIAN');
+    writeln('=====================================================');
     writeln('Nama Pembeli                   : ',tsaksi[a].nama);
     writeln('Tanggal Pembelian [DD/MM/YYYY] : ',tsaksi[a].tgl_beli.tgl,'/',tsaksi[a].tgl_beli.bln,'/',tsaksi[a].tgl_beli.thn);
-    writeln('---------------------------------------------------------------------');
+    writeln('-----------------------------------------------------');
     showBeli(tsaksi,a);
-    writeln('---------------------------------------------------------------------');
+    writeln('-----------------------------------------------------');
     writeln('Total Akhir                    : ',tsaksi[a].tot_akhir);
+    writeln('=====================================================');
   end;
   readln;
 End;
@@ -627,16 +640,16 @@ begin
   while (i<=maxi) do
   begin
     clrscr;
-    writeln('=====================================================================');
+    writeln('=====================================================');
     writeln('TRANSAKSI KE-',i);
-    writeln('=====================================================================');
+    writeln('=====================================================');
     writeln('Nama Pembeli : ',tsaksi[i].nama);
     writeln('Tanggal Pembelian : ',tsaksi[i].tgl_beli.tgl,'/',tsaksi[i].tgl_beli.bln,'/',tsaksi[i].tgl_beli.thn);
-    writeln('---------------------------------------------------------------------');
+    writeln('-----------------------------------------------------');
     showBeli(tsaksi,i);
-    writeln('---------------------------------------------------------------------');
+    writeln('-----------------------------------------------------');
     writeln('Total Akhir : ',tsaksi[i].tot_akhir);
-    writeln('=====================================================================');
+    writeln('=====================================================');
     readln;
     if (i<>maxi) then
     begin
@@ -647,85 +660,85 @@ begin
   end;
 end;
 {--------------------------------- MENU 6 -------------------------------------}
-Procedure showSold(bbt : pot; month : laporan);
+function sumTahun (month : laporan):longint;
+var
+  total : longint;
+begin
+  total :=0;
+  for i:=1 to 12 do
+    total:=total+month[i];
+  sumTahun:=total;
+end;
+Procedure showBulan(bbt : pot; month : laporan; bln : integer);
 {Menampilkan data penjualan array 1}
 var
   i,j : integer;
-  bln : integer;
 begin
   clrscr;
-  for bln:=1 to 12 do
+  i:=1;
+  while (bbt[i].nama_buah<>'') do
   begin
-    i:=1;
-    while (bbt[i].nama_buah<>'') do
-    begin
-      clrscr;
-      writeln('===============================================');
-      case bln of
-        1 : writeln('DATA PENJUALAN BULAN JANUARI');
-        2 : writeln('DATA PENJUALAN BULAN FEBRUARI');
-        3 : writeln('DATA PENJUALAN BULAN MARET');
-        4 : writeln('DATA PENJUALAN BULAN APRIL');
-        5 : writeln('DATA PENJUALAN BULAN MEI');
-        6 : writeln('DATA PENJUALAN BULAN JUNI');
-        7 : writeln('DATA PENJUALAN BULAN JULI');
-        8 : writeln('DATA PENJUALAN BULAN AGUSTUS');
-        9 : writeln('DATA PENJUALAN BULAN SEPTEMBER');
-        10 : writeln('DATA PENJUALAN BULAN OKTOBER');
-        11 : writeln('DATA PENJUALAN BULAN NOVEMBER');
-        12 : writeln('DATA PENJUALAN BULAN DESEMBER');
-      end;
-      writeln('===============================================');
-      writeln('BUAH KE-',i);
-      writeln('Nama Buah : ',bbt[i].nama_buah);
-      writeln;
-      j:=1;
-      while (bbt[i].jenis[j].nama_jenis<>'') do
-      begin
-        writeln('JENIS KE-',j);
-        writeln(' A. Nama Jenis           : ',bbt[i].jenis[j].nama_jenis);
-        writeln(' B. Terjual              : ',bbt[i].jenis[j].keterangan.sold[bln]);
-        writeln(' C. Pendapatan           : ',bbt[i].jenis[j].keterangan.sold[bln]*bbt[i].jenis[j].keterangan.harga);
-        readln;
-        j:=j+1;
-      end;
-      if (bbt[i+1].nama_buah<>'') then
-      begin
-        writeln('Press <ENTER> to see next data..');
-        readln;
-      end;
-      i:=i+1;
-    end;
-    writeln('===============================================');
+    clrscr;
+    writeln('=====================================================');
     case bln of
-      1 : writeln('TOTAL PEMASUKAN BULAN JANUARI : ',month[1]);
-      2 : writeln('TOTAL PEMASUKAN BULAN FEBRUARI : ',month[2]);
-      3 : writeln('TOTAL PEMASUKAN BULAN MARET : ',month[3]);
-      4 : writeln('TOTAL PEMASUKAN BULAN APRIL : ',month[4]);
-      5 : writeln('TOTAL PEMASUKAN BULAN MEI : ',month[5]);
-      6 : writeln('TOTAL PEMASUKAN BULAN JUNI : ',month[6]);
-      7 : writeln('TOTAL PEMASUKAN BULAN JULI : ',month[7]);
-      8 : writeln('TOTAL PEMASUKAN BULAN AGUSTUS : ',month[8]);
-      9 : writeln('TOTAL PEMASUKAN BULAN SEPTEMBER : ',month[9]);
-      10 : writeln('TOTAL PEMASUKAN BULAN OKTOBER : ',month[10]);
-      11 : writeln('TOTAL PEMASUKAN BULAN NOVEMBER : ',month[11]);
-      12 : writeln('TOTAL PEMASUKAN BULAN DESEMBER : ',month[12]);
+      1 : writeln('DATA PENJUALAN BULAN JANUARI');
+      2 : writeln('DATA PENJUALAN BULAN FEBRUARI');
+      3 : writeln('DATA PENJUALAN BULAN MARET');
+      4 : writeln('DATA PENJUALAN BULAN APRIL');
+      5 : writeln('DATA PENJUALAN BULAN MEI');
+      6 : writeln('DATA PENJUALAN BULAN JUNI');
+      7 : writeln('DATA PENJUALAN BULAN JULI');
+      8 : writeln('DATA PENJUALAN BULAN AGUSTUS');
+      9 : writeln('DATA PENJUALAN BULAN SEPTEMBER');
+      10 : writeln('DATA PENJUALAN BULAN OKTOBER');
+      11 : writeln('DATA PENJUALAN BULAN NOVEMBER');
+      12 : writeln('DATA PENJUALAN BULAN DESEMBER');
     end;
-    writeln('===============================================');
-    readln;
+    writeln('=====================================================');
+    writeln('BUAH KE-',i);
+    writeln('Nama Buah : ',bbt[i].nama_buah);
+    writeln('-----------------------------------------------------');
+    j:=1;
+    while (bbt[i].jenis[j].nama_jenis<>'') do
+    begin
+      writeln('JENIS KE-',j);
+      writeln(' A. Nama Jenis           : ',bbt[i].jenis[j].nama_jenis);
+      writeln(' B. Terjual              : ',bbt[i].jenis[j].keterangan.sold[bln]);
+      writeln(' C. Pendapatan           : ',bbt[i].jenis[j].keterangan.sold[bln]*bbt[i].jenis[j].keterangan.harga);
+      readln;
+      j:=j+1;
+    end;
+    if (bbt[i+1].nama_buah<>'') then
+    begin
+      writeln('Press <ENTER> to see next data..');
+      readln;
+    end;
+    i:=i+1;
   end;
-  writeln('Press <ENTER> to see complete sales report in 2017');
+  writeln('=====================================================');
+  case bln of
+    1 : writeln('TOTAL PEMASUKAN BULAN JANUARI : ',month[1]);
+    2 : writeln('TOTAL PEMASUKAN BULAN FEBRUARI : ',month[2]);
+    3 : writeln('TOTAL PEMASUKAN BULAN MARET : ',month[3]);
+    4 : writeln('TOTAL PEMASUKAN BULAN APRIL : ',month[4]);
+    5 : writeln('TOTAL PEMASUKAN BULAN MEI : ',month[5]);
+    6 : writeln('TOTAL PEMASUKAN BULAN JUNI : ',month[6]);
+    7 : writeln('TOTAL PEMASUKAN BULAN JULI : ',month[7]);
+    8 : writeln('TOTAL PEMASUKAN BULAN AGUSTUS : ',month[8]);
+    9 : writeln('TOTAL PEMASUKAN BULAN SEPTEMBER : ',month[9]);
+    10 : writeln('TOTAL PEMASUKAN BULAN OKTOBER : ',month[10]);
+    11 : writeln('TOTAL PEMASUKAN BULAN NOVEMBER : ',month[11]);
+    12 : writeln('TOTAL PEMASUKAN BULAN DESEMBER : ',month[12]);
+  end;
+  writeln('=====================================================');
   readln;
 end;
-{Menu 6}
-Procedure report(bbt : pot; tsaksi : struk; month : laporan);
-{Melaporkan pemasukan per bulan pada tahun 2017}
+Procedure ShowTahun (month : laporan);
 begin
-  showSold(bbt,month);
   clrscr;
-  writeln('=====================================================================');
+  writeln('=====================================================');
   writeln ('LAPORAN PEMASUKAN PENJUALAN BIBIT BUAH TAHUN 2017');
-  writeln('=====================================================================');
+  writeln('=====================================================');
   writeln('JANUARI   : ',month[1]);
   writeln('FEBRUARI  : ',month[2]);
   writeln('MARET     : ',month[3]);
@@ -738,10 +751,39 @@ begin
   writeln('OKTOBER   : ',month[10]);
   writeln('NOVEMBER  : ',month[11]);
   writeln('DESEMBER  : ',month[12]);
-  writeln('=====================================================================');
-  writeln('TOTAL     : ',month[1]+month[2]+month[3]+month[4]+month[5]+month[6]+month[7]+month[8]+month[9]+month[10]+month[11]+month[12]);
-  writeln('=====================================================================');
+  writeln('=====================================================');
+  writeln('TOTAL     : ',sumTahun(month));
+  writeln('=====================================================');
   readln;
+end;
+{Menu 6}
+Procedure report(bbt : pot; tsaksi : struk; month : laporan);
+{Melaporkan pemasukan per bulan pada tahun 2017}
+var
+  bln,pil : integer;
+begin
+  repeat
+    clrscr;
+    writeln('=====================================================');
+    writeln('                       MENU REPORT');
+    writeln('=====================================================');
+    writeln('1. Laporan Untuk Satu Bulan');
+    writeln('2. Laporan Untuk Satu Tahun');
+    writeln('3. Back to Main Menu');
+    writeln('=====================================================');
+    write('Masukkan pilihan anda : ');
+    readln(pil);
+    writeln('=====================================================');
+    case pil of
+    1 : begin
+          writeln;
+          write('Masukkan bulan yang ingin dicari [dalam angka] : ');
+          readln(bln);
+          showBulan(bbt,month,bln);
+        end;
+    2 : showTahun(month);
+    end;
+  until (pil=3);
 end;
 {--------------------------------- TRANSISI -----------------------------------}
 Procedure opsi (var tanya : char);
@@ -758,9 +800,9 @@ BEGIN
   a:=0;
   repeat
     clrscr;
-    writeln('===================================');
-    writeln('             MAIN MENU');
-    writeln('===================================');
+    writeln('=====================================================');
+    writeln('                       MAIN MENU');
+    writeln('=====================================================');
     writeln('1. Input Data Bibit');
     writeln('2. Tampilkan Data Bibit');
     writeln('3. Edit Data Bibit');
@@ -768,9 +810,10 @@ BEGIN
     writeln('5. Tampilkan Data Tranaksi');
     writeln('6. Laporan Penjualan');
     writeln('7. Exit');
-    writeln('===================================');
+    writeln('=====================================================');
     write('Masukkan pilihan anda : ');
     readln(pilihan);
+    writeln('=====================================================');
     case pilihan of
     1 : begin
           input(bibit,i);
@@ -779,16 +822,16 @@ BEGIN
     2 : begin
           repeat
             clrscr;
-            writeln('=============================');
-            writeln('          MENU SHOW');
-            writeln('=============================');
+            writeln('=====================================================');
+            writeln('                       MENU SHOW');
+            writeln('=====================================================');
             writeln('1. Sorting berdasarkan harga');
             writeln('2. Sorting berdasarkan stok');
             writeln('3. Back to main menu');
-            writeln('=============================');
+            writeln('=====================================================');
             write('Masukkan pilihan anda : ');
             readln(pil);
-            writeln;
+            writeln('=====================================================');
             case pil of
             1 : begin
                   sort_harga(bibit);
