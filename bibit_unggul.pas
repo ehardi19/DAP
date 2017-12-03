@@ -119,6 +119,9 @@ begin
     if (bbt[i].nama_buah<>'') then
       i:=i+1;
     clrscr;
+    writeln('=====================================================');
+    writeln('                       INPUT DATA');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     writeln('DATA BUAH KE-',i);
     write('Nama Buah : ');
@@ -127,6 +130,9 @@ begin
     j:=1;
     repeat
       clrscr;
+      writeln('=====================================================');
+      writeln('                       INPUT DATA');
+      writeln('=====================================================');
       writeln('-----------------------------------------------------');
       writeln('DATA BUAH KE-',i);
       writeln('Nama Buah : ',bbt[i].nama_buah);
@@ -151,7 +157,7 @@ begin
     until(tanya2='T') or (tanya2='t');
     write('Ingin menambahkan buah lagi ? [Y/T]  : ');
     readln(tanya1);
-    writeln('-----------------------------------------------------');
+    writeln('=====================================================');
   until(tanya1='T') or (tanya1='t');
 end;
 {--------------------------------- MENU 2 -------------------------------------}
@@ -168,6 +174,9 @@ begin
   while (i<=maxi) do
   begin
     clrscr;
+    writeln('=====================================================');
+    writeln('                       LIST DATA');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     writeln('BUAH KE-',i);
     writeln('Nama Buah : ',bbt[i].nama_buah);
@@ -296,6 +305,9 @@ begin
   clrscr;
   repeat
     clrscr;
+    writeln('=====================================================');
+    writeln('                       EDIT DATA');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     writeln('DATA BUAH KE-',i);
     writeln('Nama Buah : ',bbt[i].nama_buah);
@@ -330,6 +342,9 @@ var
 begin
   repeat
     clrscr;
+    writeln('=====================================================');
+    writeln('                       EDIT DATA');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     write('Masukkan nama jenis yang ingin diedit : ');
     readln(xJenis);
@@ -347,6 +362,7 @@ begin
       writeln('4. Edit Harga Satuan');
       writeln('5. Edit Stok');
       writeln('6. Hapus Data Jenis');
+      writeln('7. Exit'); //Untuk keluar dari menu ini bila tidak jadi
       writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
@@ -389,7 +405,7 @@ begin
     write('Lakukan pengeditan untuk jenis lain ? [Y/T] : ');
     readln(tanya);
     writeln('-----------------------------------------------------');
-  until (tanya='T') or (tanya='t') or (pil=7);
+  until (tanya='T') or (tanya='t');
 end;
 {Menu 3}
 Procedure editData (var bbt : pot);
@@ -404,6 +420,9 @@ var
 begin
   repeat
   clrscr;
+    writeln('=====================================================');
+    writeln('                       EDIT DATA');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     write('Masukkan nama buah yang ingin diedit : ');
     readln(xBuah);
@@ -419,6 +438,7 @@ begin
       writeln('2. Tambahkan Data Jenis');
       writeln('3. Edit Data Jenis');
       writeln('4. Hapus Data Buah');
+      writeln('5. Exit'); //Untuk keluar dari menu ini bila tidak jadi
       writeln('=====================================================');
       write('Masukkan pilihan anda : ');
       readln(pil);
@@ -498,6 +518,9 @@ Begin
     if (b=1) then
     begin
       tsaksi[a].list_beli[b].tot_harga:=0;
+      writeln('=====================================================');
+      writeln('                       TRANSAKSI');
+      writeln('=====================================================');
       writeln('-----------------------------------------------------');
       writeln('DATA PEMBELI');
       writeln('-----------------------------------------------------');
@@ -520,6 +543,9 @@ Begin
     end;
     writeln;
     clrscr;
+    writeln('=====================================================');
+    writeln('                       TRANSAKSI');
+    writeln('=====================================================');
     writeln('-----------------------------------------------------');
     writeln('PENCARIAN BIBIT');
     writeln('-----------------------------------------------------');
@@ -536,6 +562,9 @@ Begin
       begin
         {Show}
         clrscr;
+        writeln('=====================================================');
+        writeln('                       TRANSAKSI');
+        writeln('=====================================================');
         if (bbt[i].jenis[j].keterangan.stok>0) then
         begin
           writeln('-----------------------------------------------------');
@@ -637,6 +666,8 @@ begin
   begin
     clrscr;
     writeln('=====================================================');
+    writeln('                       LIST TRANSAKSI');
+    writeln('=====================================================');
     writeln('TRANSAKSI KE-',i);
     writeln('=====================================================');
     writeln('Nama Pembeli : ',tsaksi[i].nama);
@@ -675,6 +706,8 @@ begin
   while (bbt[i].nama_buah<>'') do
   begin
     clrscr;
+    writeln('=====================================================');
+    writeln('                       REPORT');
     writeln('=====================================================');
     case bln of
       1 : writeln('DATA PENJUALAN BULAN JANUARI');
@@ -733,6 +766,8 @@ Procedure ShowTahun (month : laporan);
 begin
   clrscr;
   writeln('=====================================================');
+  writeln('                       REPORT');
+  writeln('=====================================================');
   writeln ('LAPORAN PEMASUKAN PENJUALAN BIBIT BUAH TAHUN 2017');
   writeln('=====================================================');
   writeln('JANUARI   : ',month[1]);
@@ -761,7 +796,7 @@ begin
   repeat
     clrscr;
     writeln('=====================================================');
-    writeln('                       MENU REPORT');
+    writeln('                       REPORT');
     writeln('=====================================================');
     writeln('1. Laporan Untuk Satu Bulan');
     writeln('2. Laporan Untuk Satu Tahun');
@@ -785,7 +820,7 @@ end;
 Procedure opsi (var tanya : char);
 {Transisi untuk kembali ke menu utama atau keluar}
 begin
-  writeln('Press any button to go to main menu..');
+  writeln('Press <ENTER> to go to main menu..');
   writeln('Press <X> button to exit..');
   readln(tanya);
 end;
@@ -819,7 +854,7 @@ BEGIN
           repeat
             clrscr;
             writeln('=====================================================');
-            writeln('                       MENU SHOW');
+            writeln('                       LIST DATA');
             writeln('=====================================================');
             writeln('1. Sorting berdasarkan harga');
             writeln('2. Sorting berdasarkan stok');
