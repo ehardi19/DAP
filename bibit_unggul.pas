@@ -13,14 +13,14 @@ ket = record
     sold : array[1..12] of integer;
 end;
 Type
-jenis = record
+macam = record
   nama_jenis : string;
   keterangan : ket;
 end;
 Type
 buah = record
   nama_buah : string;
-  jenis : array [1..100] of jenis;
+  jenis : array [1..100] of macam;
 end;
 Type
 pot = array [1..100] of buah;
@@ -33,8 +33,8 @@ times = record
 end;
 Type
 list = record
-  buah : string;
-  jenis : string;
+  buah_beli : string;
+  jenis_beli : string;
   jum_beli : integer;
   harga_sat : longint;
   tot_harga : longint;
@@ -208,7 +208,7 @@ procedure sort_harga(bbt : pot);
 {Mengurutkan berdasarkan harga dari tertinggi ke terendah}
 var
   i,sizei,sizej,a,b,max : integer;
-  temp : jenis;
+  temp : macam;
 begin
   sizei:=countBuah(bbt);
   for i:=1 to sizei do
@@ -234,7 +234,7 @@ procedure sort_stok(bbt : pot);
 {Mengurutkan berdasarkan jumlah stok dari tertinggi ke terendah}
 var
   i,sizei,sizej,a,b,max : integer;
-  temp : jenis;
+  temp : macam;
 begin
   sizei:=countBuah(bbt);
   for i:=1 to sizei do
@@ -484,12 +484,12 @@ var
   b : integer;
 begin
   b:=1;
-  while (tsaksi[a].list_beli[b].buah<>'') do
+  while (tsaksi[a].list_beli[b].buah_beli<>'') do
   begin
     writeln('-----------------------------------------------------');
     writeln('ITEM KE-',b);
     writeln('-----------------------------------------------------');
-    writeln('Jenis Bibit Buah               : ',tsaksi[a].list_beli[b].buah,' ',tsaksi[a].list_beli[b].jenis);
+    writeln('Jenis Bibit Buah               : ',tsaksi[a].list_beli[b].buah_beli,' ',tsaksi[a].list_beli[b].jenis_beli);
     writeln('Jumlah Pembelian               : ',tsaksi[a].list_beli[b].jum_beli);
     writeln('Harga Satuan                   : ',tsaksi[a].list_beli[b].harga_sat);
     writeln('Total Harga                    : ',tsaksi[a].list_beli[b].tot_harga);
@@ -502,11 +502,11 @@ end;
 Procedure transaction(var bbt : pot; var tsaksi : struk; var month : laporan; var a : integer);
 {Melakukan proses transaksi untuk mengisi array 2: transaksi}
 var
-  buah,jenis : string;
+  fruit,variant : string;
   foundBuah,foundJenis : boolean;
   i,j,b : integer;
-  nama : string;
-  tgl,bln : integer;
+  names : string;
+  dd,mm : integer;
   jum_beli : integer;
   cek_stok : boolean;
   confirm,again : char;
@@ -525,20 +525,20 @@ Begin
       writeln('DATA PEMBELI');
       writeln('-----------------------------------------------------');
       write('Nama Pembeli         : ');
-      readln(nama);
+      readln(names);
       writeln('-----------------------------------------------------');
       writeln('Taanggal Pembelian');
       writeln('-----------------------------------------------------');
       write('Tanggal              : ');
-      readln(tgl);
+      readln(dd);
       write('Bulan                : ');
-      readln(bln);
+      readln(mm);
       writeln('Tahun                : 2017');
       writeln('-----------------------------------------------------');
       readln;
-      tsaksi[a].nama:=nama;
-      tsaksi[a].tgl_beli.tgl:=tgl;
-      tsaksi[a].tgl_beli.bln:=bln;
+      tsaksi[a].nama:=names;
+      tsaksi[a].tgl_beli.tgl:=dd;
+      tsaksi[a].tgl_beli.bln:=mm;
       tsaksi[a].tgl_beli.thn:=2017; //asumsi semua transaksi pada tahun 2017
     end;
     writeln;
@@ -550,14 +550,14 @@ Begin
     writeln('PENCARIAN BIBIT');
     writeln('-----------------------------------------------------');
     write('Masukkan nama buah  : ');
-    readln(buah);
+    readln(fruit);
     write('Masukkan jenis buah : ');
-    readln(jenis);
+    readln(variant);
     writeln('-----------------------------------------------------');
-    searchBuah(bbt,buah,foundBuah,i);
+    searchBuah(bbt,fruit,foundBuah,i);
     if (foundBuah=true) then
     begin
-      searchJenis(bbt,i,jenis,foundJenis,j);
+      searchJenis(bbt,i,variant,foundJenis,j);
       if (foundJenis=true) then
       begin
         {Show}
@@ -594,15 +594,15 @@ Begin
               cek_stok:=cekStok(jum_beli,bbt,i,j);
               if (cek_stok=true) then
               begin
-                tsaksi[a].list_beli[b].buah:=buah;
-                tsaksi[a].list_beli[b].jenis:=jenis;
+                tsaksi[a].list_beli[b].jenis_beli:=variant;
+                tsaksi[a].list_beli[b].buah_beli:=fruit;
                 tsaksi[a].list_beli[b].jum_beli:=jum_beli;
                 tsaksi[a].list_beli[b].harga_sat:=bbt[i].jenis[j].keterangan.harga;
                 tsaksi[a].list_beli[b].tot_harga:=tsaksi[a].list_beli[b].harga_sat*tsaksi[a].list_beli[b].jum_beli;
                 tsaksi[a].tot_akhir:=tsaksi[a].tot_akhir+tsaksi[a].list_beli[b].tot_harga;
                 bbt[i].jenis[j].keterangan.stok:=bbt[i].jenis[j].keterangan.stok-tsaksi[a].list_beli[b].jum_beli;
-                bbt[i].jenis[j].keterangan.sold[bln]:=tsaksi[a].list_beli[b].jum_beli;
-                month[bln]:=month[bln]+tsaksi[a].tot_akhir;
+                bbt[i].jenis[j].keterangan.sold[mm]:=tsaksi[a].list_beli[b].jum_beli;
+                month[mm]:=month[mm]+tsaksi[a].tot_akhir;
                 b:=b+1;
               end
               else
@@ -838,7 +838,7 @@ BEGIN
     writeln('2. Tampilkan Data Bibit');
     writeln('3. Edit Data Bibit');
     writeln('4. Lakukan Tranaksi');
-    writeln('5. Tampilkan Data Tranaksi');
+    writeln('5. Riwayat Tranaksi');
     writeln('6. Laporan Penjualan');
     writeln('7. Exit');
     writeln('=====================================================');
