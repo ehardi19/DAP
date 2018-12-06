@@ -1,4 +1,4 @@
-# Final-Task-Algorithm-and-Programming
+# Final-Task-Basic-Algorithms-and-Programming
 
 Final Task for Algorithm and Programming course, Telkom Univeristy
 
